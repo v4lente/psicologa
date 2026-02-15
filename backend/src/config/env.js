@@ -12,7 +12,9 @@ for (const key of requiredKeys) {
 
 export const env = {
   nodeEnv: process.env.NODE_ENV || "development",
-  port: Number(process.env.PORT || 4000),
+  port: Number(
+    process.env.PORT || process.env.APP_PORT || process.env.HOSTINGER_PORT || 3000
+  ),
   frontendOrigin: process.env.FRONTEND_ORIGIN || "http://localhost:5173",
   frontendOriginPrimary: (process.env.FRONTEND_ORIGIN || "http://localhost:5173")
     .split(",")
