@@ -41,5 +41,6 @@ export const env = {
   whatsappApiVersion: process.env.WHATSAPP_API_VERSION || "v23.0",
   whatsappPhoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID || "",
   whatsappAccessToken: process.env.WHATSAPP_ACCESS_TOKEN || "",
-  whatsappDefaultCountryCode: process.env.WHATSAPP_DEFAULT_COUNTRY_CODE || "55"
+  whatsappDefaultCountryCode: process.env.WHATSAPP_DEFAULT_COUNTRY_CODE || "55",
+  autoMigrate: String(process.env.AUTO_MIGRATE || "true") === "true"
 };

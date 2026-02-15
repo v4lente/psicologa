@@ -67,6 +67,7 @@ VITE_API_URL=/api
 ```
 
 Observacao: o `npm run build` do backend executa build do frontend automaticamente.
+No startup, com `AUTO_MIGRATE=true`, o backend tenta criar o banco/tabelas automaticamente.
 
 ## Opcao B: Desenvolvimento local (2 processos)
 
@@ -84,6 +85,12 @@ Se voce ja tinha banco criado antes desta versao, rode tambem:
 ```sql
 SOURCE backend/database/migrations/20260215_google_whatsapp_integration.sql;
 ```
+
+Alternativa automatica:
+
+- Defina `AUTO_MIGRATE=true` no backend.
+- O servidor cria tabelas/colunas faltantes ao iniciar.
+- Se o usuario MySQL nao tiver permissao para `CREATE DATABASE`, o banco precisa existir previamente.
 
 ## 2) Backend
 
