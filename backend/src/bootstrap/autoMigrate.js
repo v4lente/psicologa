@@ -229,8 +229,11 @@ async function ensureAppointmentIntegrationColumns(conn) {
 
 export async function runAutoMigrations() {
   if (!env.autoMigrate) {
+    console.log("AUTO_MIGRATE=false: migracao automatica desativada.");
     return;
   }
+
+  console.log(`AUTO_MIGRATE=true: verificando schema '${env.dbName}'...`);
 
   const connectionNoSchema = await databaseConnectionWithoutSchema();
   try {
@@ -267,6 +270,7 @@ export async function runAutoMigrations() {
     await ensureBaseTables(connection);
     await ensureBaseIndexes(connection);
     await ensureAppointmentIntegrationColumns(connection);
+    console.log("Migracao automatica concluida com sucesso.");
   } finally {
     await connection.end();
   }

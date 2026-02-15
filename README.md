@@ -59,6 +59,7 @@ Configuracao sugerida na Hostinger (app Express):
 - Install command: `npm ci`
 - Build command: `npm run build`
 - Start command: `npm start`
+- O `npm run build` agora roda migracao do banco (`npm run migrate`) e depois build do frontend.
 
 Variavel recomendada no frontend:
 
@@ -91,6 +92,7 @@ Alternativa automatica:
 - Defina `AUTO_MIGRATE=true` no backend.
 - O servidor cria tabelas/colunas faltantes ao iniciar.
 - Se o usuario MySQL nao tiver permissao para `CREATE DATABASE`, o banco precisa existir previamente.
+- Em hospedagens Hostinger, use o nome real do schema em `DB_NAME` (ex.: `u123456789_psicologa`).
 
 ## 2) Backend
 

@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
+    "migrate": "node src/scripts/migrate.js",
+    "migrate:optional": "node src/scripts/migrate-optional.js",
     "build:frontend": "npm --prefix ../frontend install --include=dev && npm --prefix ../frontend run build",
-    "build": "npm run build:frontend"
+    "build": "npm run migrate:optional && npm run build:frontend"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
