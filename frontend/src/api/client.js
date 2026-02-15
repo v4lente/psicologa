@@ -1,7 +1,13 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
+const API_URL = import.meta.env.VITE_API_URL || "/api";
 
 export async function apiRequest(path, { method = "GET", token, body, query } = {}) {
-  const url = new URL(`${API_URL}${path}`);
+  const isAbsoluteApiUrl = /^https?:\/\//i.test(API_URL);
+  const base = API_URL.endsWith("/") ? API_URL.slice(0, -1) : API_URL;
+  const finalPath = path.startsWith("/") ? path : `/${path}`;
+  const url = isAbsoluteApiUrl
+    ? new URL(`${base}${finalPath}`)
+    : new URL(`${base}${finalPath}`, window.location.origin);
+
   if (query) {
     Object.entries(query).forEach(([key, value]) => {
       if (value !== undefined && value !== null && value !== "") {

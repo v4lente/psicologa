@@ -45,6 +45,31 @@ Projeto full-stack com arquitetura modular, separado em `frontend` e `backend`, 
 
 ## Como rodar
 
+## Opcao A: Deploy unico (producao)
+
+Neste modo, o backend Express serve o frontend buildado:
+
+- Frontend: arquivos estaticos em `frontend/dist`
+- Backend/API: rotas em `/api`
+- Mesmo dominio para site e API
+
+Configuracao sugerida na Hostinger (app Express):
+
+- Diretorio raiz: `backend`
+- Install command: `npm ci`
+- Build command: `npm run build`
+- Start command: `npm start`
+
+Variavel recomendada no frontend:
+
+```env
+VITE_API_URL=/api
+```
+
+Observacao: o `npm run build` do backend executa build do frontend automaticamente.
+
+## Opcao B: Desenvolvimento local (2 processos)
+
 ## 1) Banco MySQL
 
 Crie o schema e tabelas:
