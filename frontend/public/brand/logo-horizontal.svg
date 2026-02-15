@@ -1,0 +1,29 @@
+<svg width="1080" height="280" viewBox="0 0 1080 280" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Logo horizontal Thais Coletto Psicologa</title>
+  <desc id="desc">Marca com simbolo floral e nome profissional em rosa e verde oliva.</desc>
+  <rect width="1080" height="280" rx="24" fill="#F5EDF0"/>
+  <g transform="translate(90,52)">
+    <g stroke="#E89AA9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 96C32 86 32 72 26 60" opacity="0.7"/>
+      <path d="M22 101C28 102 30 107 25 111" opacity="0.7"/>
+      <path d="M43 104C68 100 93 100 118 104" opacity="0.35"/>
+      <path d="M166 104C191 100 216 100 241 104" opacity="0.35"/>
+      <path d="M116 46C109 49 107 59 114 64C120 69 129 68 133 61C137 54 133 45 125 43"/>
+      <path d="M100 63C94 67 95 77 102 81C110 86 120 81 121 72C122 65 115 59 107 60"/>
+      <path d="M138 65C134 72 138 81 146 83C153 85 161 80 161 73C161 66 154 60 146 60"/>
+      <path d="M87 78C82 85 85 95 94 98C102 101 111 95 111 87C111 79 103 73 95 73"/>
+      <path d="M155 83C150 90 153 100 163 103C171 106 180 99 180 91C180 83 172 77 164 77"/>
+      <path d="M123 74C112 82 111 98 121 106C130 114 146 113 154 102C162 91 159 77 147 69C139 64 130 67 123 74Z"/>
+      <path d="M124 104C128 117 139 123 149 122C159 121 168 113 169 103"/>
+      <path d="M142 122C147 133 145 141 138 148"/>
+      <path d="M134 148C128 141 124 131 126 121"/>
+    </g>
+    <text x="282" y="112" font-family="Georgia, 'Times New Roman', serif" font-size="80" letter-spacing="7" fill="#CE8E9E">
+      THAIS COLETTO
+    </text>
+    <line x1="282" y1="140" x2="690" y2="140" stroke="#97A069" stroke-width="3"/>
+    <text x="282" y="178" font-family="'Trebuchet MS', Arial, sans-serif" font-size="24" letter-spacing="10" fill="#97A069">
+      CRP: 07/34396
+    </text>
+  </g>
+</svg>
