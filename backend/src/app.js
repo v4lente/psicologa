@@ -12,8 +12,14 @@ import { errorHandler } from "./shared/middlewares/errorHandler.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const frontendDistPath = path.resolve(__dirname, "../../frontend/dist");
-const hasFrontendBuild = fs.existsSync(path.join(frontendDistPath, "index.html"));
+const frontendBuildCandidates = [
+  path.resolve(__dirname, "../public"),
+  path.resolve(__dirname, "../../frontend/dist")
+];
+const frontendDistPath = frontendBuildCandidates.find((candidatePath) =>
+  fs.existsSync(path.join(candidatePath, "index.html"))
+);
+const hasFrontendBuild = Boolean(frontendDistPath);
 
 export const app = express();
 

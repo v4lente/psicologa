@@ -8,7 +8,7 @@
     "start": "node index.js",
     "migrate": "node src/scripts/migrate.js",
     "migrate:optional": "node src/scripts/migrate-optional.js",
-    "build:frontend": "npm run migrate:optional && npm --prefix ../frontend install --include=dev && npm --prefix ../frontend run build",
+    "build:frontend": "npm run migrate:optional && npm --prefix ../frontend install --include=dev && npm --prefix ../frontend run build && node src/scripts/sync-frontend-build.js",
     "build": "npm run build:frontend"
   },
   "dependencies": {

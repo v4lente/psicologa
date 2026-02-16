@@ -49,7 +49,7 @@ Projeto full-stack com arquitetura modular, separado em `frontend` e `backend`, 
 
 Neste modo, o backend Express serve o frontend buildado:
 
-- Frontend: arquivos estaticos em `frontend/dist`
+- Frontend: arquivos estaticos em `backend/public` (copiados de `frontend/dist` no build)
 - Backend/API: rotas em `/api`
 - Mesmo dominio para site e API
 
@@ -60,7 +60,7 @@ Configuracao sugerida na Hostinger (app Express):
 - Build command: `npm run build`
 - Start command: `npm start`
 - Se o painel pedir "Arquivo de entrada" no modo Node.js App Manager: `app.cjs`
-- O `npm run build` agora roda migracao do banco (`npm run migrate`) e depois build do frontend.
+- O `npm run build` roda migracao, build do frontend e copia o resultado para `backend/public`.
 
 Variavel recomendada no frontend:
 
