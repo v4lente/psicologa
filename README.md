@@ -59,8 +59,14 @@ Configuracao sugerida na Hostinger (app Express):
 - Install command: `npm ci`
 - Build command: `npm run build`
 - Start command: `npm start`
-- Se o painel pedir "Arquivo de entrada" no modo Node.js App Manager: `app.cjs`
+- Arquivo de entrada (campo da tela de deploy): `index.js`
 - O `npm run build` roda migracao, build do frontend e copia o resultado para `backend/public`.
+
+Notas importantes para evitar erro 503:
+
+- Nao use `src/app.js` como entrada (esse arquivo nao inicia o servidor HTTP).
+- Se o painel usar apenas "arquivo de entrada", mantenha `index.js`.
+- `app.cjs` existe apenas como compatibilidade para paineis legados que nao suportam ESM.
 
 Variavel recomendada no frontend:
 
