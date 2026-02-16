@@ -29,13 +29,10 @@ const resolvedDbPassword =
     ? process.env.DB_PASSWORD
     : parsedDbUrl?.password || "";
 const resolvedDbName = process.env.DB_NAME || parsedDbUrl?.name || "";
+const resolvedJwtSecret = process.env.JWT_SECRET || process.env.SESSION_SECRET || "";
 
-const requiredKeys = ["JWT_SECRET"];
-
-for (const key of requiredKeys) {
-  if (!process.env[key]) {
-    throw new Error(`Variavel obrigatoria ausente: ${key}`);
-  }
+if (!resolvedJwtSecret) {
+  throw new Error("Variavel obrigatoria ausente: JWT_SECRET (ou SESSION_SECRET)");
 }
 
 if (!resolvedDbHost) {
@@ -63,7 +60,7 @@ export const env = {
   dbUser: resolvedDbUser,
   dbPassword: resolvedDbPassword,
   dbName: resolvedDbName,
-  jwtSecret: process.env.JWT_SECRET,
+  jwtSecret: resolvedJwtSecret,
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || "12h",
   adminName: process.env.ADMIN_NAME || "Administrador",
   adminEmail: process.env.ADMIN_EMAIL || "admin@thaiscoletto.com.br",
@@ -76,7 +73,7 @@ export const env = {
   googleCalendarId: process.env.GOOGLE_CALENDAR_ID || "primary",
   googleTimezone: process.env.GOOGLE_TIMEZONE || "America/Sao_Paulo",
   integrationStateSecret:
-    process.env.INTEGRATION_STATE_SECRET || process.env.JWT_SECRET,
+    process.env.INTEGRATION_STATE_SECRET || resolvedJwtSecret,
   whatsappEnabled: String(process.env.WHATSAPP_ENABLED || "false") === "true",
   whatsappApiVersion: process.env.WHATSAPP_API_VERSION || "v23.0",
   whatsappPhoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID || "",
