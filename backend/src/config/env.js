@@ -29,10 +29,16 @@ const resolvedDbPassword =
     ? process.env.DB_PASSWORD
     : parsedDbUrl?.password || "";
 const resolvedDbName = process.env.DB_NAME || parsedDbUrl?.name || "";
-const resolvedJwtSecret = process.env.JWT_SECRET || process.env.SESSION_SECRET || "";
+const resolvedJwtSecret =
+  process.env.JWT_SECRET ||
+  process.env.SESSION_SECRET ||
+  process.env.INTEGRATION_STATE_SECRET ||
+  "";
 
 if (!resolvedJwtSecret) {
-  throw new Error("Variavel obrigatoria ausente: JWT_SECRET (ou SESSION_SECRET)");
+  throw new Error(
+    "Variavel obrigatoria ausente: JWT_SECRET (ou SESSION_SECRET/INTEGRATION_STATE_SECRET)"
+  );
 }
 
 if (!resolvedDbHost) {
