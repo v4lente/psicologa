@@ -2,12 +2,50 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const requiredKeys = ["DB_HOST", "DB_USER", "DB_NAME", "JWT_SECRET"];
+function parseDatabaseUrl(value) {
+  if (!value) return null;
+  try {
+    const url = new URL(value);
+    return {
+      host: url.hostname || "",
+      port: url.port ? Number(url.port) : 3306,
+      user: decodeURIComponent(url.username || ""),
+      password: decodeURIComponent(url.password || ""),
+      name: (url.pathname || "").replace(/^\//, "")
+    };
+  } catch {
+    return null;
+  }
+}
+
+const parsedDbUrl =
+  parseDatabaseUrl(process.env.DATABASE_URL) || parseDatabaseUrl(process.env.DB_URL);
+
+const resolvedDbHost = process.env.DB_HOST || parsedDbUrl?.host || "";
+const resolvedDbPort = Number(process.env.DB_PORT || parsedDbUrl?.port || 3306);
+const resolvedDbUser = process.env.DB_USER || parsedDbUrl?.user || "";
+const resolvedDbPassword =
+  process.env.DB_PASSWORD !== undefined
+    ? process.env.DB_PASSWORD
+    : parsedDbUrl?.password || "";
+const resolvedDbName = process.env.DB_NAME || parsedDbUrl?.name || "";
+
+const requiredKeys = ["JWT_SECRET"];
 
 for (const key of requiredKeys) {
   if (!process.env[key]) {
     throw new Error(`Variavel obrigatoria ausente: ${key}`);
   }
+}
+
+if (!resolvedDbHost) {
+  throw new Error("Variavel obrigatoria ausente: DB_HOST (ou DATABASE_URL)");
+}
+if (!resolvedDbUser) {
+  throw new Error("Variavel obrigatoria ausente: DB_USER (ou DATABASE_URL)");
+}
+if (!resolvedDbName) {
+  throw new Error("Variavel obrigatoria ausente: DB_NAME (ou DATABASE_URL)");
 }
 
 export const env = {
@@ -20,11 +58,11 @@ export const env = {
     .split(",")
     .map((origin) => origin.trim())
     .filter(Boolean)[0],
-  dbHost: process.env.DB_HOST,
-  dbPort: Number(process.env.DB_PORT || 3306),
-  dbUser: process.env.DB_USER,
-  dbPassword: process.env.DB_PASSWORD || "",
-  dbName: process.env.DB_NAME,
+  dbHost: resolvedDbHost,
+  dbPort: resolvedDbPort,
+  dbUser: resolvedDbUser,
+  dbPassword: resolvedDbPassword,
+  dbName: resolvedDbName,
   jwtSecret: process.env.JWT_SECRET,
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || "12h",
   adminName: process.env.ADMIN_NAME || "Administrador",

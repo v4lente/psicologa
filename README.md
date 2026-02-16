@@ -59,6 +59,7 @@ Configuracao sugerida na Hostinger (app Express):
 - Install command: `npm ci`
 - Build command: `npm run build`
 - Start command: `npm start`
+- Se o painel pedir "Arquivo de entrada" no modo Node.js App Manager: `app.cjs`
 - O `npm run build` agora roda migracao do banco (`npm run migrate`) e depois build do frontend.
 
 Variavel recomendada no frontend:
